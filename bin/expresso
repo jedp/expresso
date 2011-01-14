@@ -10,6 +10,8 @@
  * Module dependencies.
  */
 
+require('coffee-script');
+
 var assert = require('assert'),
     childProcess = require('child_process'),
     http = require('http'),
@@ -685,10 +687,10 @@ function runFiles(files) {
  */
 
 function runFile(file, fn) {
-    if (file.match(/\.js$/)) {
+    if (file.match(/\.(js|coffee)$/)) {
         var title = path.basename(file),
             file = path.join(cwd, file),
-            mod = require(file.replace(/\.js$/, ''));
+            mod = require(file.replace(/\.(js|coffee)$/, ''));
         (function check(){
            var len = Object.keys(mod).length;
            if (len) {
